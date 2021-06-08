@@ -10,6 +10,6 @@ public class Main {
         for(int i=0;i<T;i++){
             int a = sc.nextInt();
             int b = sc.nextInt();
-            System.out.println(String.format("Case #%d: ",i+1)+(a+b));
+            System.out.println(String.format("Case #%d: %d + %d = %d",i+1,a,b,(a+b)));
     }}
 }
