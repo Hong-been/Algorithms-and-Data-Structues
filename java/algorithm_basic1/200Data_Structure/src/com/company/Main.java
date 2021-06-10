@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.*;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -12,10 +13,12 @@ top: 스택의 가장 위에 있는 정수를 출력한다. 만약 스택에 들
 * */
 public class Main {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        Scanner sc=new Scanner(System.in);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         int t = sc.nextInt();
-        Stack st=new Stack();
+        Stack<Integer> st=new Stack<Integer>();
         int size=0;
 
         while(t-->0){
@@ -27,28 +30,28 @@ public class Main {
             }
             else if(order.equals("pop")){
                 if(size==0){
-                    System.out.println(-1);
+                    bw.write("-1\n");
                 }
                 else{
-                    System.out.println(st.pop());
+                    bw.write(st.pop()+"\n");
                     size--;
                 }
             }
             else if(order.equals("size"))
-                System.out.println(size);
+                bw.write(size+"\n");
 
             else if(order.equals("empty")){
                 if(size==0)
-                    System.out.println("1");
+                    bw.write("1\n");
                 else
-                    System.out.println("0");
+                    bw.write("0\n");
             }
             else if(order.equals("top")){
                 if(size==0){
-                    System.out.println("-1");
+                    bw.write("-1\n");
                 }
                 else{
-                    System.out.println(st.peek());
+                    bw.write(st.peek()+"\n");
                 }
             }
 
