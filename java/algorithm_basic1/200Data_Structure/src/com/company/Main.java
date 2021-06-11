@@ -1,8 +1,7 @@
 package com.company;
 
 import java.io.*;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 /*
 push X: 정수 X를 스택에 넣는 연산이다.
@@ -56,6 +55,7 @@ public class Main {
             }
 
         }
+        bw.flush();
 
     }
 }
