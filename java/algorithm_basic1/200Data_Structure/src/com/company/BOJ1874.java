@@ -11,49 +11,29 @@ public class BOJ1874 {
 
         int t = sc.nextInt();
         Stack<Integer> st=new Stack<Integer>();
-        int num=1;
-        String answer="YES";
+        int save=0;
 
         while(t-->0) {
-            boolean input=false;
-            int sequence=sc.nextInt();
-            while(input==false && answer.equals("YES")){
-                if(st.empty()){
-                    if(sequence<num){
-                        answer="NO";
-                        break;
-                    }
-                    st.push(num);
-                    num+=1;
+            int inputSeq=sc.nextInt();
+
+            if(inputSeq>save){
+                for(int i=save+1;i<=inputSeq;i++){
+                    st.push(i);
                     sb.append("+\n");
-                    continue;
                 }
-                if(st.peek()==sequence){
-                    st.pop();
-                    input=true;
-                    sb.append("-\n");
-                }
-                else{
-                    if(st.peek()<sequence){
-                        if(sequence<num){
-                            answer="NO";
-                            break;
-                        }
-                        st.push(num);
-                        num+=1;
-                        sb.append("+\n");
-                    }
-                    else if(st.peek()>sequence){
-                        st.pop();
-                        sb.append("-\n");
-                    }
-                }
+                save=inputSeq;
+            }
+
+            if(inputSeq==st.peek()){
+                st.pop();
+                sb.append("-\n");
+            }
+            else if(inputSeq!=st.peek()){
+                System.out.println("NO");
+                return;
             }
         }
-        if(answer.equals("YES"))
-            System.out.println(sb);
-        else
-            System.out.println(answer);
+        System.out.println(sb);
     }
 }
 
