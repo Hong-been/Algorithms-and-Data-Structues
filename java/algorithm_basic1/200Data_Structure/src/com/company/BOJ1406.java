@@ -5,42 +5,40 @@ import java.util.*;
 
 public class BOJ1406 {
     public static void main(String[] args) throws IOException {
-        Scanner sc=new Scanner(System.in);
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        Stack<Character> st1=new Stack<>();
-        Stack<Character> st2=new Stack<>();
+        Stack<Character> left=new Stack<>();
+        Stack<Character> right=new Stack<>();
 
-        String input = sc.next();
+        String input = br.readLine();
         for(int i=0;i<input.length();i++){
-            st1.push(input.charAt(i));
+            left.push(input.charAt(i));
         }
-        int m = sc.nextInt();
+        int m = Integer.parseInt(br.readLine());
 
         while(m-->0){
-            String order=sc.next();
-            if(order.equals("L")){
-                if(st1.empty())
-                    continue;
-                st2.push(st1.pop());
+            String[] order=br.readLine().split(" ");
+            char what=order[0].charAt(0);
+
+            if(what=='L' && !left.empty()){
+                right.push(left.pop());
             }
-            else if(order.equals("D")){
-                if(st2.empty())
-                    continue;
-                st1.push(st2.pop());
+            else if(what=='D' && !right.empty()){
+                left.push(right.pop());
             }
-            else if(order.equals("B")){
-                if(st1.empty())
-                    continue;
-                st1.pop();
+            else if(what=='B' && !left.empty()){
+                left.pop();
             }
-            else if(order.equals("P")){
-                st1.push(sc.next().charAt(0));
+            else if(what=='P'){
+                left.push(order[1].charAt(0));
             }
         }
-        while(!st1.empty())
-            st2.push(st1.pop());
+        while(!left.empty())
+            right.push(left.pop());
+        while(!right.empty())
+            sb.append(right.pop());
 
-        while(!st2.empty())
-            System.out.print(st2.pop());
+        System.out.println(sb);
     }
+
 }
