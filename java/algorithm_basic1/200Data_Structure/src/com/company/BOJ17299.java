@@ -9,7 +9,7 @@ public class BOJ17299 {
         int t=sc.nextInt();
         int[] nums=new int[t];
         int[] NGF=new int[t];
-        int[] freq=new int[t+1];
+        int[] freq=new int[1000001];
 
         Arrays.fill(NGF, -1);
         Arrays.fill(freq, 0);
