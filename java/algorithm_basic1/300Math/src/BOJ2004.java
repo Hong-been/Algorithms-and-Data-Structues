@@ -3,38 +3,29 @@ public class BOJ2004 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int m=sc.nextInt();
-        int n=sc.nextInt();
-        int answer;
+        long n=sc.nextLong();
+        long m=sc.nextLong();
+        long primeTwo=0;
+        long primeFive=0;
 
-        int primeTwo=0;
-        int primeFive=0;
-
-        primeTwo+= (NumbersPrime(m,2)- NumbersPrime(m-n,2)- NumbersPrime(n,2));
-        primeFive+= (NumbersPrime(m,5)- NumbersPrime(m-n,5)- NumbersPrime(n,5));
-
-        if(primeTwo<primeFive){
-            answer=primeTwo;
+        if(m==0 || m==n){
+            System.out.println("1");
+            return;
         }
-        else{
-            answer=primeFive;
+        if(m==1){
+            System.out.println(n);
+            return;
         }
+        primeTwo+= (NumbersPrime(n,2)- NumbersPrime(n-m,2)- NumbersPrime(m,2));
+        primeFive+= (NumbersPrime(n,5)- NumbersPrime(n-m,5)- NumbersPrime(m,5));
 
-        System.out.println(answer);
-
+        System.out.println(Math.min(primeTwo,primeFive));
     }
-    public static int NumbersPrime(int x, int prime){
-        int sum=0;
-        for(int i=prime;i<=x;i+=prime){
-            int a=i;
-            sum++;
-            a/=prime;
-            while(a%prime==0){
-                a/=prime;
-                sum++;
-            }
+    public static long NumbersPrime(long x, int prime){
+        long sum=0;
+        for(long i=prime;i<=x;i*=prime){
+            sum+=x/i;
         }
         return sum;
     }
-
 }
