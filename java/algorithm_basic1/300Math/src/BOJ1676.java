@@ -6,14 +6,8 @@ public class BOJ1676 {
 
         int n = sc.nextInt();
         int sum = 0;
-        for (int i = 5; i <= n; i += 5) {
-            int a=i;
-            sum++;
-            a/=5;
-            while(a%5==0){
-                a/=5;
-                sum++;
-            }
+        for (int i = 5; i <= n; i *= 5) {
+            sum+=n/i;
         }
         System.out.println(sum);
     }
