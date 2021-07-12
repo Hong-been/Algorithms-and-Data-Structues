@@ -60,6 +60,7 @@ public class BOJ3085 {
                 else tmp=1;
                 if(tmp>length) length=tmp;
             }
+            tmp=1;
             for(int j=0;j<n-1;j++){
                 if(a[j][i]==a[j+1][i]) tmp+=1;
                 else tmp=1;
